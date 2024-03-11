@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My page</title>
+</head>
+<body>
+    <center>
+        <h1 style="color: blue;">This is the home page</h1>
+        <br><br><br><hr>
+        <h2>These are our users: </h2>
+
+        <ul>
+            {% for u in userlist %}
+                <li>{{ u.name }}</li>
+            {% endfor %}
+        </ul>
+
+
+        <br><br><br>
+<!-- Listing out all the products in the database -->
+        <table border="1px solid">
+            {% for p in productlist %}
+            <tr>
+                <td>
+                    <a href ="prod_details/{{ p.id }}">{{ p.name }} </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+
+    </center>
+    
+    
+</body>
+</html>
