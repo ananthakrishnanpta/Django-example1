@@ -1,7 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
-from .models import User, Product
+
+from .models import User, Product # importing the classes defined in models.py of the app
 
 # Create your views here.
 def myapp(request):
