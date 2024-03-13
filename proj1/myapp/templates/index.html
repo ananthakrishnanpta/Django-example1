@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,11 +21,15 @@
 
         <br><br><br>
 <!-- Listing out all the products in the database -->
+<!-- <img src="static '/products/Spectrasonics_Omnisphere_2.png'"> -->
         <table border="1px solid">
             {% for p in productlist %}
             <tr>
                 <td>
-                    <a href ="prod_details/{{ p.id }}">{{ p.name }} </a>
+                    <a href ="prod_details/{{ p.id }}">
+                        <img src="{{ p.pic }}"  width="200" height="150">
+                        {{ p.name }} 
+                    </a>
                 </td>
             </tr>
             {% endfor %}

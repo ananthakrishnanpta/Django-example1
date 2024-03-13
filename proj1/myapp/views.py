@@ -7,16 +7,18 @@ from .models import User, Product # importing the classes defined in models.py o
 # Create your views here.
 def myapp(request):
     myusers = User.objects.all().values() # creating a list of all 'User' objects
-    myproducts = Product.objects.all().values()
+    myproducts = Product.objects.all().values() # fetching a list of all 'Products' from database
     template = loader.get_template('index.html') # loading the template
     # return loader.get_template('index.html').render()
     context = {
         'userlist' : myusers,    # providing the context for the data to be given to the template
-        'productlist' : myproducts
+        'productlist' : myproducts # the variable 'productlist' will now be available to be rendered in the template 'index.html'
+
     }
     return HttpResponse(template.render(context, request)) # rendering the webpage from the template and sending it to the client
 
-def prod_details(request, id):
+def prod_details(request, id): # handling the Http request dependant on the 'id' value received from the url pattern requested by client.
+
     product = Product.objects.get(id = id) # select * from Product where id = <some_id_number>
     context = {
         'product' : product
@@ -24,5 +26,7 @@ def prod_details(request, id):
     template = loader.get_template('prod_details.html')
     return HttpResponse(template.render(context, request))
 
+
+# This view is not fully implemented; will be done later.
 def userLogin(request):
     return HttpResponse("Hi, the login page is yet to be built !!!")
