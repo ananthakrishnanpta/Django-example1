@@ -24,18 +24,26 @@
 <!-- <img src="static '/products/Spectrasonics_Omnisphere_2.png'"> -->
         <table border="1px solid">
             {% for p in productlist %}
-            <tr>
-                <td>
-                    <a href ="prod_details/{{ p.id }}">
-                        <img src="{{ p.pic }}"  width="200" height="150">
-                        {{ p.name }} 
-                    </a>
-                </td>
-            </tr>
+                <tr>
+                    <td>
+                        <a href ="prod_details/{{ p.id }}">
+                            <img src="{{ p.pic }}"  width="200" height="150">
+                            {{ p.name }} 
+                        </a>
+                    </td>
+                </tr>
             {% endfor %}
         </table>
 
     </center>
+
+    <div>
+        <p>
+            <h1>
+                
+            </h1>
+        </p>
+    </div>
     
     
 </body>
