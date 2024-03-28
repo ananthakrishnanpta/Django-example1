@@ -1,9 +1,10 @@
 from django.urls import path
-
+from .views import HomeView
 from . import views # importing views.py to import it's defined Http response functions
 
 urlpatterns = [
-    path('', views.myapp, name='myapp'),
+    # path('', views.myapp, name='myapp'),
+    path('', HomeView.as_view(), name='myapp' ),
     path('login', views.userLogin, name=''),
     path('prod_details/<int:id>', views.prod_details, name="prod_details" )
     # utilizing <int:id> in the url pattern to ensure unique url pattern for each individual product's details page.
