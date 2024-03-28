@@ -4,7 +4,7 @@ from . import views # importing views.py to import it's defined Http response fu
 
 urlpatterns = [
     # path('', views.myapp, name='myapp'),
-    path('', HomeView.as_view(), name='myapp' ),
+    path('', HomeView.as_view(), name='myapp' ), # instead of using the FBV called 'myapp', we are using this CBV for homepage
     path('login', views.userLogin, name=''),
     path('prod_details/<int:id>', views.prod_details, name="prod_details" )
     # utilizing <int:id> in the url pattern to ensure unique url pattern for each individual product's details page.
