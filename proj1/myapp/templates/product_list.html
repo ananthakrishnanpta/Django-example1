@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+    <!-- Listing out all the products in the database -->
+<!-- <img src="static '/products/Spectrasonics_Omnisphere_2.png'"> -->
+<table border="1px solid">
+    {% for p in product_list %}
+        <tr>
+            <td>
+                <a href ="{% url 'prod_details_view' p.pk %}">
+                    <img src="{{ p.pic }}"  width="200" height="150">
+                    {{ p.name }} 
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+</table>
+
+    
+</body>
+</html>

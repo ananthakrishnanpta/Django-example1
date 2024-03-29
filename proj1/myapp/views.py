@@ -7,6 +7,10 @@ from .models import User, Product # importing the classes defined in models.py o
 # importing View to create a custom class-based view
 from django.views import View
 
+# importing Generic Class-Based Views
+
+from django.views.generic import CreateView, ListView, DetailView
+
 # Create your views here.
 
 # These are function-based views
@@ -44,6 +48,8 @@ def userLogin(request):
 # These are class-based views...
 
 
+# This is a CBV version of the FBV called 'myapp' defined above --->
+
 class HomeView(View):
     myusers = User.objects.all().values() # creating a list of all 'User' objects
     myproducts = Product.objects.all().values() # fetching a list of all 'Products' from database
@@ -53,10 +59,36 @@ class HomeView(View):
             'productlist' : myproducts # the variable 'productlist' will now be available to be rendered in the template 'index.html'
             }
     def get(self, request):
-        
         # return loader.get_template('index.html').render()
-
         return HttpResponse(self.template.render(self.context, request)) # rendering the webpage from the template and sending it to the client
 
 
 ################################################################################################################
+
+# Now we explore the use of Class Based Generic Views
+
+# CRUD operations 
+
+# 1. C    
+# We are defining a View for creating a product item
+    
+class CreateProduct(CreateView):
+    model = Product
+    fields = ['name', 'price']
+
+# 2. R
+# List View and DetailView are 2 frequently used Generic CBVs in Django
+    
+class ProductListing(ListView):
+    # model = Product
+    queryset = Product.objects.all()
+    template_name = 'product_list.html'
+    ordering = ['-id'] 
+    # This is to order the products in desc order according to their pk
+
+
+# DetailView is inherited and a product details view is built
+    
+class ProductDetails(DetailView):
+    queryset = Product.objects.all()
+    template_name = 'prod_details.html'

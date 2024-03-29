@@ -7,7 +7,9 @@
 </head>
 <body>
     <br>
-    <img src="{{ product.pic.url }}" alt=""> <!-- referring to the absolute url of the image -->
+    {% if product.pic %}
+        <img width = "200px" src="{{ product.pic.url }}" alt=""> <!-- referring to the absolute url of the image -->
+    {% endif %}
     <h1>{{ product.id }}</h1>,
     <p>{{ product.price }} rupees </p>
     <br><br>
