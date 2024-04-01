@@ -92,3 +92,7 @@ class ProductListing(ListView):
 class ProductDetails(DetailView):
     queryset = Product.objects.all()
     template_name = 'prod_details.html'
+
+    def get_context_data(self, *args, **kwargs):
+        context =  super(ProductDetails, self).get_context_data(*args,**kwargs)
+        return context
