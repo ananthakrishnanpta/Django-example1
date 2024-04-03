@@ -74,7 +74,8 @@ class HomeView(View):
     
 class CreateProduct(CreateView):
     model = Product
-    fields = ['name', 'price']
+    fields = ['name', 'price', 'pic']
+    success_url = "/" # On successful submission of the form, user is redirected to home page
 
 # 2. R
 # List View and DetailView are 2 frequently used Generic CBVs in Django
