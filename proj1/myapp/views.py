@@ -9,7 +9,18 @@ from django.views import View
 
 # importing Generic Class-Based Views
 
-from django.views.generic import CreateView, ListView, DetailView
+from django.views.generic import CreateView, ListView, DetailView, UpdateView, DeleteView
+
+# importing url utilities to help with redirections
+
+from django.urls import reverse, reverse_lazy
+
+##############################################################################################
+# importing the forms here
+
+# from .forms import EditForm
+
+##############################################################################################
 
 # Create your views here.
 
@@ -91,9 +102,28 @@ class ProductListing(ListView):
 # DetailView is inherited and a product details view is built
     
 class ProductDetails(DetailView):
-    queryset = Product.objects.all()
+    queryset = Product.objects.all() # Here, 
+    # in case of the entire schema being required from a model, model  = <model-name> can be used as well instead of Queryset
+    
     template_name = 'prod_details.html'
 
     def get_context_data(self, *args, **kwargs):
         context =  super(ProductDetails, self).get_context_data(*args,**kwargs)
         return context
+
+# 3. U
+# UpdateView is inherited
+    
+class EditProduct(UpdateView):
+    model = Product
+    fields = ['name', 'price', 'pic']
+    template = 'editProduct.html'
+    success_url = "/"
+
+# 4. D
+# DeleteView is inherited
+    
+class DeleteProduct(DeleteView):
+    model = Product
+    template_name = "delProduct.html"
+    success_url = reverse_lazy('myapp')

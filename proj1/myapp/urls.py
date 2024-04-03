@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import HomeView, CreateProduct, ProductListing, ProductDetails
+from .views import HomeView, CreateProduct, ProductListing, ProductDetails, EditProduct, DeleteProduct
 from . import views # importing views.py to import it's defined Http response functions
 
 urlpatterns = [
@@ -11,7 +11,12 @@ urlpatterns = [
     path('products/<int:pk>', ProductDetails.as_view(), name="prod_details_view"),
     # utilizing <int:id> in the url pattern to ensure unique url pattern for each individual product's details page.
     # the path() function replaces the <int:id> with the id number of the particular product from database.
-    path('addProduct', CreateProduct.as_view(),name="create_prod_view" )
+    path('addProduct', CreateProduct.as_view(),name="create_prod_view" ),
+    # below implemented is the url for the update view
+    path('editProduct/<int:pk>', EditProduct.as_view(), name="edit_product" ),
+    # below implemented is the url for delete view 
+    path('delProduct<int:pk>', DeleteProduct.as_view(), name = "del_product")
+
 ]
 
 """

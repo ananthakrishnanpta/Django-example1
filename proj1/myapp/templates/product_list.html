@@ -7,7 +7,7 @@
 {% block content %}
     <!-- Listing out all the products in the database -->
 <!-- <img src="static '/products/Spectrasonics_Omnisphere_2.png'"> -->
-<table border="1px solid">
+<!-- <table border="1px solid">
     {% for p in product_list %}
         <tr>
             <td>
@@ -18,6 +18,28 @@
             </td>
         </tr>
     {% endfor %}
-</table>
+</table> -->
 
+
+<div class="container-fluid">
+    {% for p in product_list %}
+    <br>
+    <a href ="{% url 'prod_details_view' p.pk %}">
+        <div class="row hover">
+            
+            <div class="col-xs-6 col-md-4">
+                <img  src="{{ p.pic }}"  width="200" height="150"> 
+            </div>
+            <div class="col-xs-12 col-md-8">
+                {{p.name}}
+                <br>
+                {{p.price}} rupees
+            </div>
+        </div>
+    </a>
+    
+    {% endfor %}
+    
+
+</div>
 {% endblock %}
