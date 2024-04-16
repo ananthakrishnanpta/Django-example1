@@ -1,0 +1,8 @@
+/* 
+Write the custom style sheet here 
+and this will be loaded as static files 
+*/
+
+div {
+    border: none;
+}
