@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 
-from .models import User, Product # importing the classes defined in models.py of the app
+from .models import  Product # importing the classes defined in models.py of the app
 
 # importing View to create a custom class-based view
 from django.views import View
@@ -29,12 +29,10 @@ from django.urls import reverse, reverse_lazy
 # The following view 'myapp' has been again implemented using Class based views down below for demo purposes. The CBV is 'HomeView'
 
 def myapp(request):
-    myusers = User.objects.all().values() # creating a list of all 'User' objects
     myproducts = Product.objects.all().values() # fetching a list of all 'Products' from database
     template = loader.get_template('index.html') # loading the template
     # return loader.get_template('index.html').render()
-    context = {
-        'userlist' : myusers,    # providing the context for the data to be given to the template
+    context = {   # providing the context for the data to be given to the template
         'productlist' : myproducts # the variable 'productlist' will now be available to be rendered in the template 'index.html'
 
     }
@@ -62,11 +60,9 @@ def userLogin(request):
 # This is a CBV version of the FBV called 'myapp' defined above --->
 
 class HomeView(View):
-    myusers = User.objects.all().values() # creating a list of all 'User' objects
     myproducts = Product.objects.all().values() # fetching a list of all 'Products' from database
     template = loader.get_template('index.html') # loading the template
-    context = {
-            'userlist' : myusers,    # providing the context for the data to be given to the template
+    context = {   # providing the context for the data to be given to the template
             'productlist' : myproducts # the variable 'productlist' will now be available to be rendered in the template 'index.html'
             }
     def get(self, request):
