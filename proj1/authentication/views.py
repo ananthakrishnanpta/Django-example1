@@ -1,5 +1,7 @@
 from django.shortcuts import redirect, render
 from .forms import RegisterationForm
+from django.contrib.auth.forms import AuthenticationForm # imported on 29th April 2024
+from django.contrib.auth import authenticate, login
 # Create your views here.
 
 
@@ -22,3 +24,25 @@ def register_page(request):
         
 
     return render(request, "register.html", context )
+
+
+def login_page(request):
+
+    form = AuthenticationForm() # Creating a form object from django's authentical form class'
+
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password_ = request.POST.get('password')
+        user = authenticate(username, password_)
+
+        if user != None:
+            login(request, user)
+            return redirect('/')
+
+    context = {
+        "title" : "Login Page",
+        "form" : 'form'
+    }
+
+
+    return render(request, "login.html", context)
