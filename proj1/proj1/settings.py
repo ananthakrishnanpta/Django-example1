@@ -133,3 +133,10 @@ MEDIA_URL = '/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+# These are added to set the redirection post login or logout
+
+LOGIN_REDIRECT_URL = 'myapp'
+
+LOGOUT_REDIRECT_URL = '/'

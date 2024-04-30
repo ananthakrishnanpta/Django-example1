@@ -90,7 +90,8 @@ class CreateProduct(CreateView):
 class ProductListing(ListView):
     # model = Product
     queryset = Product.objects.all()
-    template_name = 'product_list.html'
+    template_name = 'product_list.html' # if this is not set, by default, template will be looked inside
+                        # <app_name>/<model_name>_<view_type>.html
     ordering = ['-id'] 
     # This is to order the products in desc order according to their pk
 
