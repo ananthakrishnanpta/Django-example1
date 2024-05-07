@@ -15,7 +15,10 @@ urlpatterns = [
     # below implemented is the url for the update view
     path('editProduct/<int:pk>', EditProduct.as_view(), name="edit_product" ),
     # below implemented is the url for delete view 
-    path('delProduct<int:pk>', DeleteProduct.as_view(), name = "del_product")
+    path('delProduct<int:pk>', DeleteProduct.as_view(), name = "del_product"),
+
+    # for the search box
+    path('search/', views.search, name='search'),
 
 ]
 

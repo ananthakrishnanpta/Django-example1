@@ -124,3 +124,15 @@ class DeleteProduct(DeleteView):
     model = Product
     template_name = "delProduct.html"
     success_url = reverse_lazy('myapp')
+
+
+def search(request):
+    query = request.GET.get('q')
+    results = Product.objects.filter(name__icontains=query) #| Product.objects.filter(description__icontains=query)
+    # The above is equivalent to 'SELECT * FROM Product WHERE name LIKE "%<query>%" '
+    template = 'search_results.html'
+    context =  {
+        'results': results,
+        'query': query
+          }
+    return render(request, template, context) 
