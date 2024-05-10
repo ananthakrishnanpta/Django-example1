@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 {% block title2 %}
-    Main page
+Main page
 {% endblock %}
 
 
 {% block content %}
-    <!-- Listing out all the products in the database -->
+<!-- Listing out all the products in the database -->
 <!-- <img src="static '/products/Spectrasonics_Omnisphere_2.png'"> -->
 <!-- <table border="1px solid">
     {% for p in product_list %}
@@ -21,25 +21,61 @@
 </table> -->
 
 
-<div class="container-fluid">
-    {% for p in product_list %}
-    <br>
-    <a href ="{% url 'prod_details_view' p.pk %}">
-        <div class="row hover">
-            
-            <div class="col-xs-6 col-md-4">
-                <img  src="{{ p.pic }}"  width="200" height="150"> 
-            </div>
-            <div class="col-xs-12 col-md-8">
-                {{p.name}}
-                <br>
-                {{p.price}} rupees
-            </div>
-        </div>
-    </a>
-    
-    {% endfor %}
-    
 
+
+
+
+<!-- -------------------------------------------------------->
+
+
+<div class="container d-flex justify-content-center mt-50 mb-50">
+    <div class="row">
+        {% for p in product_list %}
+        <div class="col-md-4 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-img-actions">
+                        <div class="img-container">
+                            <img src="{{ p.pic }}" class="card-img img-fluid" width="96" height="350" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body bg-light text-center">
+                    <div class="mb-2">
+                        <h6 class="font-weight-semibold mb-2">
+                            <a href="{% url 'prod_details_view' p.pk %}" class="text-default mb-2" data-abc="true">
+                                {{ p.name }}
+                            </a>
+                        </h6>
+                        <a href="#" class="text-muted" data-abc="true">Category</a>
+                    </div>
+
+                    <h3 class="mb-0 font-weight-semibold">&#8377; {{ p.price }}</h3>
+
+                    <div>
+                        <i class="fa fa-star star"></i>
+                        <i class="fa fa-star star"></i>
+                        <i class="fa fa-star star"></i>
+                        <i class="fa fa-star star"></i>
+                    </div>
+
+                    <div class="text-muted mb-3">34 reviews</div>
+
+                    <!-- <button href = ""}type="button" class="btn btn-primary"><i class="fa fa-cart-plus mr-2"></i> Add to
+                        cart</button> -->
+                        <a class="buy-now-button" href="{% url 'cart:add_to_cart' p.id %}">Add to Cart</a>
+
+
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        {% endfor %}
+    </div>
 </div>
 {% endblock %}

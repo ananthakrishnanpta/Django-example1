@@ -40,7 +40,9 @@
             <!-- Only visible to users who are logged in -->
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <button class="btn btn-primary" href="{% url 'cart:cartpage' %}">Cart</button>
+              <a  href="{% url 'cart:view_cart' %}">
+                <button class="btn btn-primary">Cart</button>
+              </a>
             </li>
 
             <li class="nav-item">
