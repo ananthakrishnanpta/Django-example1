@@ -10,6 +10,6 @@ from .views import UserRegisterView
 
 urlpatterns = [
     # path('signup/',register_page, name="register"),
-    path('signup/',UserRegisterView.as_view(), name='register')
+    path('signup/',UserRegisterView.as_view(), name='register'),
     # path('login', login_page, name="login")
 ]
